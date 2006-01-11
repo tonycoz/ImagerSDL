@@ -1,0 +1,3 @@
+# from the SDL-perl typemap
+SDL_Surface *		T_PTR
+

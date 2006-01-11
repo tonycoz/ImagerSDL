@@ -1,0 +1,15 @@
+# svn work files'
+^\.svn\b
+/\.svn\b
+
+# editor trash
+~$
+
+# build trash
+Makefile$
+Makefile\.old
+\bpm_to_blib$
+\.o$
+^blib/
+\.bs$
+^SDL\.c$

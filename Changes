@@ -1,0 +1,4 @@
+0.01 
+- Initial release:
+  - basic code, including auto_update, auto_lock, update, lock, unlock
+  - mandel.pl demo

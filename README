@@ -1,0 +1,12 @@
+Imager::SDL provides an Imager interface to SDL::Surface objects.
+
+Requires:
+
+  Imager 0.48
+  SDL_perl
+
+Most testing was done with SDL_perl 2.1.3, but earlier versions should
+work too.
+
+See demo/mandel.pl for sample code.
+

@@ -1,0 +1,13 @@
+Changes			Change history
+MANIFEST		This file
+MANIFEST.SKIP		Files to skip in manifest tools
+META.yml		Module meta-data (added by MakeMaker)
+Makefile.PL
+README
+SDL.pm
+SDL.xs
+demo/mandel.pl		Demo program
+imsdl.c			The guts
+imsdl.h
+typemap
+t/t00sdl.t		Basic test
