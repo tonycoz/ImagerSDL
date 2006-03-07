@@ -36,14 +36,14 @@ static void general_setter(SDL_Surface *, int l, int r, int y, const i_color *);
 #define SampleFTo8(num) ((int)((num) * 255.0 + 0.01))
 #define Sample8ToF(num) ((num) / 255.0)
 
-static int i_ppix_sdl_d(i_img *im, int x, int y, i_color *val);
+static int i_ppix_sdl_d(i_img *im, int x, int y, const i_color *val);
 static int i_gpix_sdl_d(i_img *im, int x, int y, i_color *val);
 static int i_glin_sdl_d(i_img *im, int l, int r, int y, i_color *vals);
-static int i_plin_sdl_d(i_img *im, int l, int r, int y, i_color *vals);
-static int i_ppixf_sdl_d(i_img *im, int x, int y, i_fcolor *val);
+static int i_plin_sdl_d(i_img *im, int l, int r, int y, const i_color *vals);
+static int i_ppixf_sdl_d(i_img *im, int x, int y, const i_fcolor *val);
 static int i_gpixf_sdl_d(i_img *im, int x, int y, i_fcolor *val);
 static int i_glinf_sdl_d(i_img *im, int l, int r, int y, i_fcolor *vals);
-static int i_plinf_sdl_d(i_img *im, int l, int r, int y, i_fcolor *vals);
+static int i_plinf_sdl_d(i_img *im, int l, int r, int y, const i_fcolor *vals);
 static int i_gsamp_sdl_d(i_img *im, int l, int r, int y, i_sample_t *samps, const int *chans, int chan_count);
 static int i_gsampf_sdl_d(i_img *im, int l, int r, int y, i_fsample_t *samps, const int *chans, int chan_count);
 static void i_destroy_sdl_d(i_img *im);
@@ -151,7 +151,7 @@ i_sdl_update(i_img *im) {
 }
 
 static int
-i_ppix_sdl_d(i_img *im, int x, int y, i_color *val) {
+i_ppix_sdl_d(i_img *im, int x, int y, const i_color *val) {
   return i_plin_sdl_d(im, x, x+1, y, val) ? -1 : 0;
 }
 
@@ -190,7 +190,7 @@ i_glin_sdl_d(i_img *im, int l, int r, int y, i_color *vals) {
 }
 
 static int
-i_plin_sdl_d(i_img *im, int l, int r, int y, i_color *vals) {
+i_plin_sdl_d(i_img *im, int l, int r, int y, const i_color *vals) {
   int count = 0;
   SDL_Surface *surface = IMSURFACE(im);
   sdl_set_func setter;
@@ -278,7 +278,7 @@ i_gsamp_sdl_d(i_img *im, int l, int r, int y, i_sample_t *samps, const int *chan
 }
 
 static int
-i_ppixf_sdl_d(i_img *im, int x, int y, i_fcolor *val) {
+i_ppixf_sdl_d(i_img *im, int x, int y, const i_fcolor *val) {
   return i_plinf_sdl_d(im, x, x+1, y, val);
 }
 
@@ -325,7 +325,7 @@ i_glinf_sdl_d(i_img *im, int l, int r, int y, i_fcolor *vals) {
 }
 
 static int
-i_plinf_sdl_d(i_img *im, int l, int r, int y, i_fcolor *vals) {
+i_plinf_sdl_d(i_img *im, int l, int r, int y, const i_fcolor *vals) {
   int count = 0;
   SDL_Surface *surface = IMSURFACE(im);
   sdl_set_func setter;
