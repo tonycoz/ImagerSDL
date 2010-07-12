@@ -68,7 +68,7 @@ my %actions =
    SDL_QUIT() => sub { print "\n"; exit },
   );
 
-loop($app, \%actions);
+$app->loop(\%actions);
 
 # SDL::App's loop() method calls sync() for every event that's processed
 # so don't use it if you're using Imager::SDL's update method.
@@ -134,7 +134,8 @@ sub event_mousemotion {
     if (!$active_selection_event) {
       my $sel_event = SDL::Event->new;
       $sel_event->type(MANDEL_SELECTION);
-      $sel_event->push;
+      #$sel_event->push;
+      SDL::Events::push_event($sel_event);
       ++$active_selection_event;
     }
   }

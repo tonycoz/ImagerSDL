@@ -2,6 +2,7 @@ package Imager::SDL;
 use strict;
 use vars qw($VERSION @ISA);
 use Imager;
+use SDL::Video;
 
 BEGIN {
   $VERSION = "0.01";
@@ -28,7 +29,7 @@ sub new {
   $opts{surface}->isa("SDL::Surface")
     or return $class->_set_error("surface not a SDL::Surface");
   
-  my $raw = i_img_sdl_new(${$opts{surface}}, $opts{auto_update});
+  my $raw = i_img_sdl_new($opts{surface}, $opts{auto_update});
   unless ($raw) {
     $Imager::ERRSTR = $class->_error_as_msg;
     return;
@@ -47,11 +48,11 @@ sub auto_lock {
 }
 
 sub lock {
-  $_[0]->{SURFACE}->lock;
+  SDL::Video::lock_surface($_[0]->{SURFACE});
 }
 
 sub unlock {
-  $_[0]->{SURFACE}->unlock;
+  SDL::Video::unlock_surface($_[0]->{SURFACE});
 }
 
 sub update {
